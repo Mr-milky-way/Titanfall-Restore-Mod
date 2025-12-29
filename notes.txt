@@ -1,0 +1,12 @@
+Ship to Ship (s2s)
+MaltaWidow_DevTest on ship to ship is BugReproNum 5 set with 'SetBugReproNumber 5' command. This is the same value for printing the malta origin. And for printing the 64's delta and angles when breaching.
+Stopping the spawn of thermite titans when fighting viper on ship to ship is BugReproNum 101
+For OLA and MALTA position print is BugReproNum 20
+
+IF BugReproNum IS NOT 0 AT THE END OF SHIP TO SHIP YOU WILL GO BACK TO WHEN YOU ARE IN THE ARC CONTAINER AND NOT CHANGE LEVELS
+
+All
+Rodeo Test is BugReproNum 7205
+
+Beacon Spoke0
+For SonicRun_FullyAnimated in Beacon Spoke0 use 81765

@@ -1,0 +1,11 @@
+{
+    "Name": "TF.RESTORE",
+    "Description": "Woo yeah wooo!",
+    "Version": "0.0.1",
+    "RequiredOnClient": true,
+    "LoadPriority": 5,
+    "ConVars": [],
+    "ConCommands": [],
+    "Scripts": [],
+    "Localisation": []
+}

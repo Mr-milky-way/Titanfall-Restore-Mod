@@ -1,0 +1,6 @@
+{
+    "Postload":
+    {
+        "startpoints.rpak": "common.rpak"
+    }
+}
