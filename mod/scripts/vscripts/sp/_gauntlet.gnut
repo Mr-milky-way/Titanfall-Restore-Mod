@@ -755,6 +755,106 @@ void function Gauntlet_ResetTrackerStats( GauntletInfo gauntlet )
 	gauntlet.enemiesKilled = 0
 }
 
+void function Gauntlet_StartGhostPlaybackRAW( GauntletInfo gauntlet, var reco , string ghostDisplayName = "" )//, bool waitForPlayerToStartFirstRun = true )
+{
+	gauntlet.signalEnt.Signal( "GhostAnimationPlayback_Start" )
+	gauntlet.signalEnt.EndSignal( "GhostAnimationPlayback_Start" )
+	gauntlet.signalEnt.EndSignal( "GhostAnimationPlayback_Stop" )
+	gauntlet.signalEnt.EndSignal( "DisableGauntlet" )
+
+	var rec = reco
+	if ( rec == null )
+	{
+		printt( "Gauntlet_StartGhostPlaybackRAW: invalid recording!" )
+		return
+	}
+	printt(rec)
+	float duration = GetRecordedAnimationDuration( rec )
+	printt( "duration is", duration )
+
+	entity animRef = gauntlet.startpoint
+
+	bool createdIdleRef = false
+	entity idleRef
+	if ( gauntlet.ghostAttractSpot != null )
+	{
+		idleRef = gauntlet.ghostAttractSpot
+	}
+	else
+	{
+		createdIdleRef = true
+		idleRef = CreateScriptMover( animRef.GetOrigin(), animRef.GetAngles() )
+		DropToGround( idleRef )
+	}
+
+	table<int,entity> g = {}
+
+	OnThreadEnd(
+	function() : ( g, idleRef, createdIdleRef, gauntlet )
+		{
+			if ( IsValid( g[0] ) )
+			{
+				g[0].Anim_Stop()
+				StopSoundOnEntity( g[0], "PathHologram_Sustain_Loop_3P" )
+				DissolveGhost( g[0] )
+			}
+
+			if ( createdIdleRef && IsValid( idleRef ) )
+				idleRef.Destroy()
+
+			Gauntlet_ClearActiveGhost( gauntlet )
+		}
+	)
+
+	entity ghost
+	entity ghostWeapon
+
+	bool isFirstRun = true
+
+	while ( 1 )
+	{
+		if ( IsValid( ghost ) )
+		{
+			StopSoundOnEntity( ghost, "PathHologram_Sustain_Loop_3P" )
+			DissolveGhost( ghost )
+		}
+
+		ghost = CreateGhost( idleRef.GetOrigin(), ghostDisplayName )
+		g[0] <- ghost
+		ghost.SetTitle( "Ghost Runner" )
+		ShowName( ghost )  // not working
+
+		ghostWeapon = Ghost_GetWeaponEnt( ghost )
+		ghostWeapon.kv.VisibilityFlags = ENTITY_VISIBLE_TO_NOBODY
+
+		thread PlayAnimTeleport( ghost, "pt_OG_training_stand", idleRef )
+
+		if ( !gauntlet.isActive )
+			gauntlet.signalEnt.WaitSignal( "Gauntlet_RunStarted" )
+
+		float startTime = Time()
+
+		ghostWeapon.kv.VisibilityFlags = ENTITY_VISIBLE_TO_EVERYONE
+
+		EmitSoundOnEntity( ghost, "PathHologram_Sustain_Loop_3P" )
+		printt( rec, IsValid( rec ))
+		ghost.Anim_Stop()
+		if ( IsValid( rec ) && IsValid( ghost ) )
+			ghost.PlayRecordedAnimation( rec, <0,0,0>, <0,0,0>, DEFAULT_SCRIPTED_ANIMATION_BLEND_TIME, animRef )
+
+		thread GhostPlayback_HideGhostIfPlayerIsNear( ghost, ghostWeapon )
+
+		float ghostFadeTime = 1.2
+		float waitBeforeFade = duration - ghostFadeTime
+		WaitSignalTimeout( gauntlet.signalEnt, waitBeforeFade, "Gauntlet_RunStopped" )
+
+		// ended prematurely
+		if ( Time() - startTime < waitBeforeFade )
+			ghost.Anim_Stop()
+
+		isFirstRun = false
+	}
+}
 
 // ===== GHOST RECORDINGS =====
 void function Gauntlet_StartGhostPlayback( GauntletInfo gauntlet, string ghostFileName, string ghostDisplayName = "" )//, bool waitForPlayerToStartFirstRun = true )
@@ -1028,6 +1128,10 @@ void function Gauntlet_Player_StartRecordingGhost( entity player, GauntletInfo g
 			printt( "!!!! RECORDED ANIM NOT SAVED!!!!" )
 			continue
 		}
+
+		printl("PLAYBACK STARTED")
+		if ( IsValid( recording ) )
+			thread Gauntlet_StartGhostPlaybackRAW( gauntlet, recording )
 
 	}
 }

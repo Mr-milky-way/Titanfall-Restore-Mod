@@ -5000,7 +5000,7 @@ void function PodOutro_Background_Runners( entity player )
 	wait 1.5
 	thread SpawnSkitGuy_AndRun( "runner_5_4", path2, 0.85, TEAM_MILITIA, "npc_soldier", "mp_weapon_rspn101" )
 
-	/*
+	
 	wait 5.0
 
 	wait 4.0
@@ -5008,7 +5008,7 @@ void function PodOutro_Background_Runners( entity player )
 	thread SpawnSkitGuy_AndRun( "runner_2_1", path2, 0.8, TEAM_MILITIA, "npc_soldier", "mp_weapon_rspn101" )
 	wait 1.0
 	thread SpawnSkitGuy_AndRun( "runner_2_2", path2, 0.8, TEAM_MILITIA, "npc_soldier", "mp_weapon_shotgun" )
-	*/
+	
 }
 
 void function PodOutro_Foreground_Runners( entity player )

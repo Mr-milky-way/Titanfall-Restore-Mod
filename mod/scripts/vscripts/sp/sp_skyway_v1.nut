@@ -1924,20 +1924,6 @@ void function TortureRoomSetup( entity player )
 	thread GuardBTortureRoom( sequenceRef )
 
 	FlagClear( "WeaponDropsAllowed" )
-
-
-	/*
-	thread ShadowDepthResTweak( player )
-	thread TortureRoomOpeningBlur( player )
-	thread SloneTortureRoom( sequenceRef, player )
-	thread BliskTortureRoom( sequenceRef, player )
-	thread BTTortureRoom( sequenceRef, player )
-	thread PlayerTortureRoom( sequenceRef, player )
-	thread HarnessTortureRoom( sequenceRef )
-	thread GuardATortureRoom( sequenceRef )
-	thread GuardBTortureRoom( sequenceRef )
-	thread MarderTortureRoom( sequenceRef )
-	*/
 }
 
 /*

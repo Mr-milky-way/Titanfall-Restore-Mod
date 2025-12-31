@@ -108,7 +108,7 @@ void function Temp_InitTimeshiftDialogue()
 			RegisterDialogue_Timeshift( "diag_sp_vistaHall_TS141_03_01_imc_scientist3", "diag_sp_vistaHall_TS141_03_01_imc_scientist3" )
 
 			//IMC Security 1 - PA	 (ding) Security team Charlie, please report to the lecture hall.
-			//RegisterDialogue_Timeshift( "diag_sp_vistaHall_TS141_04_01_imc_security1", "diag_sp_vistaHall_TS141_04_01_imc_security1" )
+			RegisterDialogue_Timeshift( "diag_sp_vistaHall_TS141_04_01_imc_security1", "diag_sp_vistaHall_TS141_04_01_imc_security1" )
 
 			//Scientist 4	 Pfft. Pilots.
 			RegisterDialogue_Timeshift( "diag_sp_vistaHall_TS141_05_01_imc_scientist4", "diag_sp_vistaHall_TS141_05_01_imc_scientist4" )

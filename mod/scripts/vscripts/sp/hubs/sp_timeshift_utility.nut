@@ -595,7 +595,7 @@ vector function GetPosInOtherTimeline( vector pos )
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////
-/*
+
 function DamagedBreakableHydraulic( func_brush, damageInfo )
 {
 	int damageSourceID = DamageInfo_GetDamageSourceIdentifier( damageInfo )
@@ -611,7 +611,7 @@ function DamagedBreakableHydraulic( func_brush, damageInfo )
 
 	Signal( func_brush, "BreakableDestroyed" )
 }
-*/
+
 /////////////////////////////////////////////////////////////////////////////////////////
 void function PlayerSpawned( entity player )
 {
@@ -817,7 +817,7 @@ void function OnSpawnedFuncBrush( entity func_brush )
 
 }
 
-/*
+
 /////////////////////////////////////////////////////////////////////////////////////////
 void function TempDoorThink( entity info_target )
 {
@@ -877,7 +877,7 @@ void function TempDoorThink( entity info_target )
 	EmitSoundAtPosition( TEAM_UNASSIGNED, origin, "door_stop" )
 
 }
-*/
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -1223,10 +1223,10 @@ void function OnSpawnedTrigger( entity trigger )
 	if ( scriptName == "trigger_elevator_npc" )
 		thread trigger_elevator_npc_think( trigger )
 
-	/*
+	
 	if ( scriptName == "trigger_time_hint" )
 		thread TriggerTimehintThink( trigger )
-	*/
+	
 
 
 	//Spectre activated door panel triggers
@@ -1258,7 +1258,7 @@ void function trigger_elevator_npc_think( entity trigger )
 	vector soundOrigin
 	entity door
 	entity elevatorLightEntity
-	//entity button
+	entity button
 	string classname
 	string editorClassname
 
@@ -1279,16 +1279,16 @@ void function trigger_elevator_npc_think( entity trigger )
 			door = ent
 			continue
 		}
-		/*if ( editorClassname == "script_switch" )
+		if ( editorClassname == "script_switch" )
 		{
 			button = ent
 			continue
 		}
-		*/
+		
 	}
 	Assert( IsValid( door ) )
 	Assert( IsValid( elevatorLightEntity ) )
-	//Assert( IsValid( button ) )
+	Assert( IsValid( button ) )
 
 	string flagToOpenDoor = expect string( door.kv.script_flag )
 	Assert( flagToOpenDoor != "" )
@@ -1953,7 +1953,7 @@ function OnSatchelPlanted( player, collisionParams )
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
+
 function SatchelHint( entity player )
 {
 	player.EndSignal( "OnDeath" )
@@ -2027,7 +2027,7 @@ function SatchelHint( entity player )
 
 }
 
-*/
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool function PlayerHasSatchels( entity player )
@@ -2686,7 +2686,7 @@ entity function GetSpectreDoorSwitchByDummyName( string dummyName )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*
+
 void function TimeVortexThink( entity trigger )
 {
 	trigger.EndSignal( "OnDestroy" )
@@ -2768,11 +2768,11 @@ void function TimeVortexThink( entity trigger )
 
 }
 
-*/
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*
+
 void function TimeVortexSoundThread( player )
 {
 	player.EndSignal( "OnDeath" )
@@ -2784,7 +2784,7 @@ void function TimeVortexSoundThread( player )
 
 }
 
-*/
+
 
 
 
@@ -3359,7 +3359,7 @@ array< entity > fireTriggers = GetEntArrayByScriptName( scriptName )
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
+
 void function SpawnWallSpectreGroupWhenInRange( entity player, array< entity > propSpawners, int maxToSpawn, string flagToAbort = "", string flagToSetWhenDone = "", float delayMin = 3, float delayMax = 5, string flagToSet = "", bool requireLookAt = false )
 {
 	Assert( propSpawners.len() >= maxToSpawn,  "Max to spawn( " + maxToSpawn + ") is greater than number of propSpawners (" + propSpawners.len() + ") " )
@@ -3405,7 +3405,7 @@ void function SpawnWallSpectreGroupWhenInRange( entity player, array< entity > p
 		wait( RandomFloatRange( delayMin, delayMax ) )
 	}
 }
-*/
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void function SpawnShowcaseGroupWhenInRange( entity player, array< entity > propSpawners, int maxToSpawn, string flagToAbort = "", string flagToSetWhenDone = "", float delayMin = 3, float delayMax = 5, string flagToSet = "", bool requireLookAt = false )
@@ -3840,7 +3840,7 @@ function DamageHintTillTimetravel( entity player )
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
-/*
+
 void function TriggerTimehintThink( entity trigger )
 {
 	wait 1
@@ -3877,7 +3877,7 @@ void function TriggerTimehintThink( entity trigger )
 	thread TimeshiftHint( player, timeZoneToShowHint, flagToAbort, "#BLANK_TEXT", trigger )
 
 }
-*/
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 void function TimeshiftHint( entity player, var timeZoneToShowHint, string flagToAbort, string message, entity trigger = null )
@@ -4123,7 +4123,7 @@ entity function CreateLoudspeakerEnt( vector origin )
 	return loudspeakerEnt
 }
 
-/*
+
 void function BatteryMoveSounds( entity leftBattery, entity rightBattery )
 {
 	entity soundEnt = leftBattery
@@ -4134,10 +4134,10 @@ void function BatteryMoveSounds( entity leftBattery, entity rightBattery )
 	soundEnt = rightBattery
 	EmitSoundOnEntity( soundEnt, "timeshift_battery_conduit_stop" )
 }
-*/
 
 
-/*
+
+
 void function BrokenBatteryMoveSounds( entity leftBattery )
 {
 	FlagEnd( "bunker_move_battery" )
@@ -4180,10 +4180,10 @@ void function BrokenBatteryMoveSounds( entity leftBattery )
 	}
 }
 
-*/
 
 
-/*
+
+
 
 void function FuelPanelSounds( vector origin, string flagToStart, string flagToStop )
 {
@@ -4198,7 +4198,7 @@ void function FuelPanelSounds( vector origin, string flagToStart, string flagToS
 	EmitSoundAtPosition( TEAM_UNASSIGNED, origin, "door_stop" )
 }
 
-*/
+
 
 
 void function DestroyIfValid( string scriptName )
@@ -4420,7 +4420,7 @@ void function DeleteNpcWhenOutOfSight( entity npc, entity player )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*
+
 void function TimeFlux( entity player, string triggerNameToDoFlux, string flagToAbort = "", int maxSwaps = -1, float minFluxTime = 0.75, maxFluxTime = 2 )
 {
 	if ( !IsValid( player ) )
@@ -4493,7 +4493,7 @@ void function TimeFlux( entity player, string triggerNameToDoFlux, string flagTo
 
 }
 
-*/
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 void function SwapTimelinesScripted( entity player, var timeZone )
@@ -4534,7 +4534,7 @@ void function SwapTimelinesScripted( entity player, var timeZone )
 
 
 
-/*
+
 void function MakeSpectreOwnedByPlayer( entity spectre, entity player )
 {
 	spectre.EnableNPCFlag( NPC_IGNORE_ALL )
@@ -4555,7 +4555,7 @@ void function MakeSpectreOwnedByPlayer( entity spectre, entity player )
 	spectre.EnableBehavior( "Follow" )
 
 }
-*/
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 entity function CreateBestLoudspeakerEnt( entity player, var timeZone, entity existingEnt = null )
@@ -4590,7 +4590,7 @@ void function HideWeaponsAndAmmoTillFlag( string scriptName, string flagToRestor
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
-/*
+
 void function DeleteWaponsWithScriptname( string scriptName )
 {
 	array <entity> weapons = GetWeaponArray( true )
@@ -4601,7 +4601,7 @@ void function DeleteWaponsWithScriptname( string scriptName )
 
 	}
 }
-*/
+
 /////////////////////////////////////////////////////////////////////////////////////
 void function ShowEntityOnFlag( entity weapon, string flagToRestore )
 {
@@ -4680,7 +4680,7 @@ void function GiveLowAmmo( entity player )
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 void function CivilianSkitThink( entity civilian, entity player, string flagToReact = "" )
 {
-	/*
+	
 	//---------------------------------------------
 	// Does civilian have props or escape nodes?
 	//---------------------------------------------
@@ -4697,7 +4697,7 @@ void function CivilianSkitThink( entity civilian, entity player, string flagToRe
 			escapeOrg = ent
 	}
 
-	*/
+	
 
 
 }
