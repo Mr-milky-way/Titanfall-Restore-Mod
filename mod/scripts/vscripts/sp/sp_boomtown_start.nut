@@ -142,10 +142,11 @@ void function OpeningDialogue( entity player )
 
 	// BT mentions cliff when you approach
 	FlagWait( "WatchYourStepDialogue" )
-	if ( player.IsTitan() )
+	if ( player.IsTitan() ){
 		PlayBTDialogue( "BT_WATCH_OUR_STEP" )
-	else
+	}else {
 		PlayBTDialogue( "BT_WATCH_YOUR_STEP" )
+	}
 
 }
 
@@ -216,7 +217,6 @@ void function ProwlerIntro( entity player )
 	// Wait for trigger
 	FlagWait( "SpawnTurretsAndProwls" )
 
-
 	// Spawn turrets and prowlers
 	array<entity> prowlers
 	foreach( entity spawner in prowlerSpawners )
@@ -235,7 +235,7 @@ void function ProwlerIntro( entity player )
 	}
 
 	FlagWait( "DeleteIntroTurretsAndProwlers" )
-
+	
 	foreach( entity turret in turrets )
 	{
 		if ( IsValid( turret ) )
@@ -246,7 +246,7 @@ void function ProwlerIntro( entity player )
 		if ( IsValid( prowler ) )
 			prowler.Destroy()
 	}
-
+	
 }
 
 void function IntroRadioDialogue( entity player )
@@ -309,7 +309,7 @@ void function StartPoint_PropHouse( entity player )
 {
 	printt( "Start Point - Prop Warehouse" )
 
-	FlagSet( "DeleteIntroTurretsAndProwlers" )
+	//FlagSet( "DeleteIntroTurretsAndProwlers" )
 	thread GammaSquadSpotsYouDialogue( player )
 
 	FlagWait( "NarrowHallway" )
@@ -375,7 +375,6 @@ void function HighSpeedDangerousArea()
 	vector pos = GetEntByScriptName( "bt_badplace_fastmover" ).GetOrigin()
 	float radius = 256
 	entity lifetimeEnt
-
 	while( true )
 	{
 		FlagWait( "HighSpeedDangerousArea" )
@@ -656,6 +655,7 @@ void function EndingSequence( entity player )
 
 	// Make the elevator work when the player stands on it
 	FlagSet( "ElevatorActive" )
+	FlagSet( "DeleteIntroTurretsAndProwlers" )
 
 	// <ALARM> <ALARM>
 	//waitthread PlayDialogue( "PA_ALARM", loudspeaker )

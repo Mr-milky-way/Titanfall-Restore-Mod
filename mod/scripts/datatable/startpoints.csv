@@ -285,7 +285,7 @@ level,startpoint,loadScreenIndex,hasDetente,spLog,spLogTitle,isLeft
 "sp_template","Finale",0,0,"","",0
 "sp_tday","Intro",1,1,"SP_MISSION_LOG_TDAY","MENU_SP_OBJECTIVES_TITLE",1
 "sp_tday","Wall Bombardment",1,0,"SP_MISSION_LOG_TDAY","MENU_SP_OBJECTIVES_TITLE",1
-"sp_tday","Trailer - Drop ",1,0,"SP_MISSION_LOG_TDAY","MENU_SP_OBJECTIVES_TITLE",1
+"sp_tday","Trailer - Drop",1,0,"SP_MISSION_LOG_TDAY","MENU_SP_OBJECTIVES_TITLE",1
 "sp_tday","Militia Big Charge",1,0,"SP_MISSION_LOG_TDAY","MENU_SP_OBJECTIVES_TITLE",1
 "sp_tday","Underground Fuel Storage",2,0,"SP_MISSION_LOG_TDAY","MENU_SP_OBJECTIVES_TITLE",1
 "sp_tday","Elevator",2,0,"SP_MISSION_LOG_TDAY","MENU_SP_OBJECTIVES_TITLE",1

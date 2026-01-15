@@ -354,6 +354,7 @@ void function StartPoint_TrailerDrop( entity player ) {
     printt( "Start Point - Trailer Drop" )
 
     if (Flag("StartPoint_TrailerDropFlag")){
+		wait 5
         printl("Start Point - Trailer Drop Flag is set")
         entity trailerSpawner1 = file.trailerSpawner1.SpawnEntity()
         entity trailerSpawner2 = file.trailerSpawner2.SpawnEntity()

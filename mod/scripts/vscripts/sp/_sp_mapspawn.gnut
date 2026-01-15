@@ -119,6 +119,10 @@ void function InitMobilityDifficulty( entity player )
 bool function EntityValidForMobilityDifficulty( entity ent, int difficulty )
 {
 	string key
+	
+	if (GetMapName() == "sp_s2s" || GetMapName() == "sp_skyway_v1")
+		difficulty = 1
+	
 	if ( difficulty == 0 )
 		key = "mobility_1_easy"
 	else if ( difficulty == 1 )

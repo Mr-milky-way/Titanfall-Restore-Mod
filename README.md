@@ -40,7 +40,7 @@ To get the full debugging and restored functionality, add the following launch o
 - Added back and FIXED (mostly) Ark testing sequence(s)
 - Added back NPC nagging on the Beacon
 - Added back flack guns on Tday
-- Added back and FIXED the werid difficulty mechanic
+- Added back and FIXED the weird difficulty mechanic
 - Other little goodys
 
 # BugReproNumber commands
@@ -51,6 +51,13 @@ Run it in the command line like ```SetBugReproNumber <number>```
 - MaltaWidow_DevTest on ship to ship is BugReproNum 5 set with command. This is the same value for printing the malta origin. And for printing the 64's delta and angles when breaching.
 - Stopping the spawn of thermite titans when fighting viper on ship to ship is BugReproNum 101
 - For OLA and MALTA position print is BugReproNum 20
+- Test_WidowJumpRecordingSetup is 2
+- TEST_HangarIntro is 3
+- TEST_HangarFightRecordingSetup is 4
+- TEST_BreachRecordingSetup is 6
+- TEST_BridgeRecordingSetup is 7
+- TEST_DeckFx is 8
+- TEST_GoblinModels is 9
 - IF BugReproNum IS NOT 0 AT THE END OF SHIP TO SHIP YOU WILL GO BACK TO WHEN YOU ARE IN THE ARC CONTAINER AND NOT CHANGE LEVELS
 ## All
 - Rodeo Test is BugReproNum 7205 (basicly makes rodeos do nothing and just kinda puts you up there)
