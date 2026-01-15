@@ -3,13 +3,24 @@ Titanfall 2 was released with a lot of cut code, this mod aims to add back this 
 
 # Installation 
 
-For this you are going to need
-- A copy of titanfall 2
-- Northstar Client
+## Requirements
+For this you MUST have the following
+- A legitimate copy of Titanfall 2
+- Northstar Client (required for mod loading)
 
-Download the version you want from the release page and add it to the mod directory of northstar
+## Easiest Method (Recommended)
+If you use Thunderstore mod manager you can install from [here](https://thunderstore.io/c/northstar/p/MrMilkyWay/Titanfall2RestoreMod/)
+Thunderstore will handle the rest automatically
 
-In order the get the best out of this mod use the launch commands of 
+## Manual Installation
+1. Download the desired version from the Releases page
+2. Extract the archive
+3. Place the extracted folder into: ```<YourTitanfall2InstallDir>/R2Northstar/mods```
+4. Launch the game via Northstar
+Note that you will have to check manually for updates
+
+## Recommended Launch Commands
+To get the full debugging and restored functionality, add the following launch options:
 ```
 -dev +developer 1 +enable_debug_overlays 1 +cl_showpos 1 +ns_prefer_datatable_from_disk 1
 ```
@@ -34,7 +45,7 @@ In order the get the best out of this mod use the launch commands of
 
 # BugReproNumber commands
 These are the value(s) to change stuff around using the ```SetBugReproNumber``` command I added.
-Run it in the command line like ```SetBugReproNumber <Input Number here>```
+Run it in the command line like ```SetBugReproNumber <number>```
 
 ## Ship to Ship
 - MaltaWidow_DevTest on ship to ship is BugReproNum 5 set with command. This is the same value for printing the malta origin. And for printing the 64's delta and angles when breaching.
@@ -47,6 +58,12 @@ Run it in the command line like ```SetBugReproNumber <Input Number here>```
 - For SonicRun_FullyAnimated in Beacon Spoke0 use 81765 (Makes the fan thingy at the end of beacon 2 out of your control)
 
 
-Thanks to [@Nextracer1](https://www.youtube.com/@Nextracer1) for inspiring this idea (and for some code (Most has been modified))
+Thanks to [@Nextracer1](https://www.youtube.com/@Nextracer1) for:
+- Inspiration
+- Original code contributions (Most code has since been modified or extended)
 
-Feel Free to make a pull request anytime!
+
+# Contributing
+
+Pull requests are welcome at any time.
+Restoration work, fixes, documentation, and discoveries are all appreciated.
