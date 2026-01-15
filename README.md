@@ -39,7 +39,7 @@ To get the full debugging and restored functionality, add the following launch o
 - Added back Draconis takeoff blastback (From @Nextracer1) but with a fix by me
 - Added back and FIXED (mostly) Ark testing sequence(s)
 - Added back NPC nagging on the Beacon
-- Added back flack guns on Tday
+- Added back flak guns on Tday
 - Added back and FIXED the weird difficulty mechanic
 - Other little goodys
 
