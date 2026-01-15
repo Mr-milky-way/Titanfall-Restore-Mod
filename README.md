@@ -1,6 +1,9 @@
 # Titanfall 2 Restore Mod
 Titanfall 2 was released with a lot of cut code, this mod aims to add back this cut functionality
 
+# Demo
+You can find a demo [here](https://youtu.be/5W49T0Bcrn8) it's not everything but it's a lot of it.
+
 # Installation 
 
 ## Requirements
@@ -12,7 +15,7 @@ For this you MUST have the following
 If you use Thunderstore mod manager you can install from [here](https://thunderstore.io/c/northstar/p/MrMilkyWay/Titanfall2RestoreMod/)
 Thunderstore will handle the rest automatically
 
-## Manual Installation
+## Manual Installation5
 1. Download the desired version from the Releases page
 2. Extract the archive
 3. Place the extracted folder into: ```<YourTitanfall2InstallDir>/R2Northstar/mods```
@@ -27,27 +30,27 @@ To get the full debugging and restored functionality, add the following launch o
 
 # Features n Stuff
 - Added ```SetBugReproNumber``` command
-- Fixed Devmeun
-- Added Gauntlet run recording playback (Still no recording though)
-- Added back ```Trailer - Drop``` start point on Tday
-- Added back Cut effect and cause rack titans mechanic (From @Nextracer1)
-- Added back Unused BT prowler attack setpiece (From @Nextracer1) Finnished ainms may come at somepoint
-- Added back Abyss 1 intro fight (From @Nextracer1)
-- Added back Gauntlet ending effects (From @Nextracer1)
-- Added back Skybridge jumpscare on effect and cause (From @Nextracer1)
-- Added back Unused gauntlet ghosts (From @Nextracer1)
-- Added back Draconis takeoff blastback (From @Nextracer1) but with a fix by me
-- Added back and FIXED (mostly) Ark testing sequence(s)
+- Fixed Devmeun (still in need of adding some functionalty back)
+- Added Gauntlet run recording playback (Still no recording though I may try to add that later idk how tho)
+- Added back ```Trailer - Drop``` start point on Trial by Fire
+- Added back Cut Effect and Cause rack titans mechanic
+- Added back Unused BT prowler attack bit on Effect and Cause (Finnished ainms may come at somepoint)
+- Added back Abyss 1 intro fight
+- Added back Gauntlet ending effects
+- Added back Skybridge jumpscare on Effect and Cause
+- Added back Unused gauntlet ghosts
+- Added back Draconis takeoff blastback on Trial by Fire
+- Added back and FIXED (mostly) Ark testing sequence(s) (need to set bug repro Numbers see [#The Ark](#the-ark))
 - Added back NPC nagging on the Beacon
-- Added back flak guns on Tday
+- Added back flak guns on Trial by Fire
 - Added back and FIXED the weird difficulty mechanic
-- Other little goodys
+- Other little goodies
 
 # BugReproNumber commands
 These are the value(s) to change stuff around using the ```SetBugReproNumber``` command I added.
 Run it in the command line like ```SetBugReproNumber <number>```
 
-## Ship to Ship
+## The Ark
 - MaltaWidow_DevTest on ship to ship is BugReproNum 5 set with command. This is the same value for printing the malta origin. And for printing the 64's delta and angles when breaching.
 - Stopping the spawn of thermite titans when fighting viper on ship to ship is BugReproNum 101
 - For OLA and MALTA position print is BugReproNum 20
@@ -61,9 +64,13 @@ Run it in the command line like ```SetBugReproNumber <number>```
 - IF BugReproNum IS NOT 0 AT THE END OF SHIP TO SHIP YOU WILL GO BACK TO WHEN YOU ARE IN THE ARC CONTAINER AND NOT CHANGE LEVELS
 ## All
 - Rodeo Test is BugReproNum 7205 (basicly makes rodeos do nothing and just kinda puts you up there)
+- Some sorta Rodeo debug would be 112023 (looks to be something with view angles)
+- Stop printing load progress is 196356
+- Stop saving with 184641 (I think)
 ## Beacon Spoke0
 - For SonicRun_FullyAnimated in Beacon Spoke0 use 81765 (Makes the fan thingy at the end of beacon 2 out of your control)
-
+## Trial by Fire
+- To stop a wait frame on into use 188170 (could break something idk)
 
 Thanks to [@Nextracer1](https://www.youtube.com/@Nextracer1) for:
 - Inspiration

@@ -801,10 +801,12 @@ void function SonicRunStart()
 		break
 	}
 
-	if ( GetBugReproNum() == 81765 )
+	if ( GetBugReproNum() == 81765 ) {
 		SonicRun_FullyAnimated( player )
-	thread SonicRun_PlayerControlled_Friction( player )
-	SonicRun_PlayerControlled( player )
+	} else {
+		thread SonicRun_PlayerControlled_Friction( player )
+		SonicRun_PlayerControlled( player )
+	}
 }
 
 void function SonicRun_PlayerControlled( entity player )
