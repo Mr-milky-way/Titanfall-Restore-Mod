@@ -1,8 +1,12 @@
 # Titanfall 2 Restore Mod
 Titanfall 2 was released with a lot of cut code, this mod aims to add back this cut functionality
 
-# Demo
+# Demo/Images
 You can find a demo [here](https://youtu.be/5W49T0Bcrn8) it's not everything but it's a lot of it.
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/e291eb8b-5a45-4224-8f27-562983ebe1f0" />
+<img width="2474" height="1395" alt="image" src="https://github.com/user-attachments/assets/58ab1df8-6622-42fa-8425-a7c55f329e2b" />
+
+
 
 # Installation 
 
