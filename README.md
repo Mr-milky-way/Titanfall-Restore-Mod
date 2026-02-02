@@ -19,7 +19,7 @@ For this you MUST have the following
 If you use Thunderstore mod manager you can install from [here](https://thunderstore.io/c/northstar/p/MrMilkyWay/Titanfall2RestoreMod/)
 Thunderstore will handle the rest automatically
 
-## Manual Installation5
+## Manual Installation
 1. Download the desired version from the Releases page
 2. Extract the archive
 3. Place the extracted folder into: ```<YourTitanfall2InstallDir>/R2Northstar/mods```
