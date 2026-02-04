@@ -17930,7 +17930,7 @@ void function TEST_GoblinModels( entity player )
 	entity bt = player.GetPetTitan()
 	bt.Destroy()
 
-	//SpawnGoblin( CLVec( < -300, 5000, 1000> ) )
+	SpawnGoblin( CLVec( < -300, 5000, 1100> ) )
 	SpawnGoblinLight( CLVec( <300, 5000, 1000> ) )
 
 	WaitForever()
