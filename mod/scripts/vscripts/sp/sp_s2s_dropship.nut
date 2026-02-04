@@ -152,6 +152,7 @@ ShipStruct function SpawnCrow( LocalVec ornull origin = null, vector angles = CO
 
 ShipStruct function SpawnDropShip( LocalVec ornull origin = null, vector angles = CONVOYDIR, array<entity> ornull spawners = null, int team = 0 )
 {
+	/*
 	if ( origin == null )
 		origin = CLVec( <0,0,0> )
 	expect LocalVec( origin )
@@ -183,6 +184,92 @@ ShipStruct function SpawnDropShip( LocalVec ornull origin = null, vector angles 
 	ship.bug_reproNum = 10
 	FakeNPCSettings( ship )
 	return ship
+	*/
+	Assert( team != 0, "Team: " + team + " not valid" )
+
+	if ( origin == null )
+		origin = CLVec( <0,0,0> )
+	expect LocalVec( origin )
+
+	ShipStruct ship
+	asset shipModel
+	if ( team == TEAM_IMC )
+	{
+		shipModel = DROPSHIP_HERO_MODEL
+		/*
+		if( animating )
+			shipModel = DROPSHIP_HERO_MODEL*/
+	}
+	else
+	{
+		Assert( team == TEAM_MILITIA )
+		shipModel = CROW_HERO_MODEL
+		/*if( animating )
+			shipModel = CROW_HERO_MODEL*/
+	}
+
+	entity mover
+	//if ( !animating )
+	//	mover = CreateScriptMoverModel( shipModel, LocalToWorldOrigin( origin ), angles, 6, 100000 )
+	//else
+		mover = CreateExpensiveScriptMoverModel( shipModel, LocalToWorldOrigin( origin ), angles, 6, 100000 )
+
+	ship.model = mover
+	ship.mover = mover
+	SetTeam( mover, team )
+
+	mover.DisableHibernation()
+
+	SetOriginLocal( mover, origin )
+	mover.SetAngles( angles )
+/*
+	if ( animating )
+	{
+		Assert( IsAlive( ship.model ) )
+		thread PlayAnim( ship.model, "dropship_closed_idle_alt", mover )
+		int eHandle = ship.model.GetEncodedEHandle()
+		Remote_CallFunction_NonReplay( GetPlayerArray()[0], "ServerCallback_DisableDropshipLights", eHandle )
+	}*/
+//	CreateFakeRiders( ship, team )
+
+	DropshipDefaultDataSettings( ship )
+
+	ship.engineDamage = false
+
+	ship.model.SetTakeDamageType( DAMAGE_YES )
+	ship.model.SetDamageNotifications( true )
+	ship.model.SetMaxHealth( GOBLIN_HEALTH )
+	ship.model.SetHealth( ship.model.GetMaxHealth() )
+	AddEntityCallback_OnDamaged( ship.model, GoblinOnDamaged )
+
+	ship.FuncGetBankMagnitude 	= GetBankMagnitudeGoblin
+
+
+	ship.localVelocity.v = <0,0,0>
+	ship.goalRadius = SHIPGOALRADIUS
+	ship.boundsMinRatio = 0.5
+
+	ResetAllEventCallbacksToDefault( ship )
+	ResetAllBehaviorsToDefault( ship )
+	ship.behavior 		= eBehavior.IDLE
+	ship.prevBehavior 	= [ eBehavior.IDLE ]
+	ship.doorState 		= eDoorState.CLOSED
+	ship.free 			= false
+
+	thread GoblinEngineFailureThink( ship )
+	thread RunBehaviorFiniteStateMachine( ship )
+
+	ResetMaxSpeed( ship )
+	ResetMaxAcc( ship )
+	ResetMaxRoll( ship )
+	ResetMaxPitch( ship )
+	ResetBankTime( ship )
+	SpawnGoblinRiders( ship, null, team )
+	//FakeNPCSettings( ship, animating )
+
+	ship.bug_reproNum = 10
+
+	return ship
 }
 
 ShipStruct function SpawnDSCombatTest( LocalVec ornull origin = null, vector angles = CONVOYDIR )
@@ -192,24 +279,56 @@ ShipStruct function SpawnDSCombatTest( LocalVec ornull origin = null, vector ang
 	expect LocalVec( origin )
 
 	//ShipStruct ship = GetFreeTemplate( file.crowTemplates )
-	ShipStruct ship = file.crowTemplates[0]
+	ShipStruct ship
+	asset shipModel
+	shipModel = CROW_HERO_MODEL
+
 	int team = TEAM_IMC
 
-	entity mover = ship.mover
+	entity mover
+	mover = CreateExpensiveScriptMoverModel( shipModel, LocalToWorldOrigin( origin ), angles, 6, 100000 )
+	ship.model = mover
+	ship.mover = mover
+	SetTeam( mover, team )
+
+	mover.DisableHibernation()
+
 	SetOriginLocal( mover, origin )
 	mover.SetAngles( angles )
+	
+	DropshipDefaultDataSettings( ship )
 
-	ResetGoblinTemplate( ship )
-	Assert( IsAlive( ship.model ) )
-	thread PlayAnim( ship.model, "dropship_closed_idle_alt", mover )
-	SpawnGoblinRiders( ship, null, team )
+	ship.engineDamage = false
 
-	if ( IsValid( ship.cockpit ) )
-		thread GoblinCockpitDamageThink( ship )
+	ship.model.SetTakeDamageType( DAMAGE_YES )
+	ship.model.SetDamageNotifications( true )
+	ship.model.SetMaxHealth( GOBLIN_HEALTH )
+	ship.model.SetHealth( ship.model.GetMaxHealth() )
+	AddEntityCallback_OnDamaged( ship.model, GoblinOnDamaged )
+
+	ship.FuncGetBankMagnitude 	= GetBankMagnitudeGoblin
+
+
+	ship.localVelocity.v = <0,0,0>
+	ship.goalRadius = SHIPGOALRADIUS
+	ship.boundsMinRatio = 0.5
+
+	ResetAllEventCallbacksToDefault( ship )
+	ResetAllBehaviorsToDefault( ship )
+	ship.behavior 		= eBehavior.IDLE
+	ship.prevBehavior 	= [ eBehavior.IDLE ]
+	ship.doorState 		= eDoorState.CLOSED
+	ship.free 			= false
+
 	thread GoblinEngineFailureThink( ship )
+	thread RunBehaviorFiniteStateMachine( ship )
 
-	//common
-	thread ShipCommonFuncs( ship )
+	ResetMaxSpeed( ship )
+	ResetMaxAcc( ship )
+	ResetMaxRoll( ship )
+	ResetMaxPitch( ship )
+	ResetBankTime( ship )
+	SpawnGoblinRiders( ship, null, team )
 	ship.bug_reproNum = 10
 	return ship
 }
@@ -245,7 +364,7 @@ ShipStruct function SpawnDropShipLight( LocalVec ornull origin = null, vector an
 		Assert( team == TEAM_MILITIA )
 		shipModel = CROW_FLYING_MODEL
 		if( animating )
-			shipModel = CROW_MODEL
+			shipModel = CROW_HERO_MODEL
 	}
 
 	entity mover

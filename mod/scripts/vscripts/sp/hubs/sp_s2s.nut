@@ -18134,13 +18134,13 @@ void function DropshipCombatTestMain( entity player )
 	DisableHullCrossing( ship )
 	SetChaseEnemy( ship, player )
 	SetBehavior( ship, eBehavior.ENEMY_CHASE )
-	/*
+	
 	pos = CLVec( < -1000, 5000, 2000 > )
 	ship = SpawnGoblin( pos )
 	DisableHullCrossing( ship )
 	SetChaseEnemy( ship, player )
 	SetBehavior( ship, eBehavior.ENEMY_CHASE )
-	*/
+	
 
 	WaitForever()
 }
