@@ -1,7 +1,7 @@
 {
     "Name": "TF.RESTORE",
-    "Description": "Woo yeah wooo!",
-    "Version": "0.0.1",
+    "Description": "Titanfall 2 was released with a lot of cut code, this mod aims to add back this cut functionality",
+    "Version": "0.1.2",
     "RequiredOnClient": true,
     "LoadPriority": 5,
     "ConVars": [],
